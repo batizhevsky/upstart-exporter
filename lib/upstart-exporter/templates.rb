@@ -53,6 +53,7 @@ stop on {{stop_on}}
 {{respawn}}
 {{respawn_limit}}
 kill timeout {{kill_timeout}}
+kill signal {{kill_signal}}
 
 script
   touch /var/log/{{app_name}}/{{cmd_name}}.log

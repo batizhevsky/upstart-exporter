@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require_relative '../../spec_helper'
 
 describe Upstart::Exporter::Templates do
   describe ".app" do
@@ -55,6 +55,7 @@ stop on stopping SOMEAPP
 respawn
 respawn limit 5 10
 kill timeout 24
+kill signal SIGINT
 
 script
   touch /var/log/SOMEAPP/SOMECMD.log
@@ -65,16 +66,20 @@ script
 end script
 HEREDOC
 
-      expect(described_class.command(:run_user => 'SOMEUSER',
-                              :run_group => 'SOMEGROUP',
-                              :app_name => 'SOMEAPP',
-                              :cmd_name => 'SOMECMD',
-                              :respawn => 'respawn',
-                              :respawn_limit => 'respawn limit 5 10',
-                              :start_on => 'starting SOMEAPP',
-                              :stop_on => 'stopping SOMEAPP',
-                              :kill_timeout => 24,
-                              :helper_cmd_conf => 'HELPERPATH')).to eq(conf)
+      generated_file = described_class.command({
+        :run_user => 'SOMEUSER',
+        :run_group => 'SOMEGROUP',
+        :app_name => 'SOMEAPP',
+        :cmd_name => 'SOMECMD',
+        :respawn => 'respawn',
+        :respawn_limit => 'respawn limit 5 10',
+        :start_on => 'starting SOMEAPP',
+        :stop_on => 'stopping SOMEAPP',
+        :kill_timeout => 24,
+        :kill_signal => 'SIGINT',
+        :helper_cmd_conf => 'HELPERPATH'})
+
+      expect(generated_file).to eq(conf)
     end
   end
 

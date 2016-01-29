@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require_relative '../spec_helper'
 
 describe Upstart::Exporter do
   let(:tpl){ Upstart::Exporter::Templates }

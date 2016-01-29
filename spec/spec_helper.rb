@@ -7,7 +7,7 @@ require 'fakefs/spec_helpers'
 
 require 'upstart-exporter'
 
-Dir['spec/support/**/*.rb'].each do |f|
+Dir["#{ File.dirname(__FILE__) }/support/**/*.rb"].each do |f|
   require f
 end
 

@@ -109,6 +109,10 @@ class Upstart::Exporter
       command_option(cmd_options, 'kill_timeout')
     end
 
+    def kill_signal(cmd_options)
+      command_option(cmd_options, 'kill_signal')
+    end
+
     def export_cmd_upstart_conf(cmd_name, cmd_options)
       cmd_upstart_conf_content = Templates.command(
         :app_name => app_name,
@@ -120,7 +124,8 @@ class Upstart::Exporter
         :helper_cmd_conf => helper_cmd_conf(cmd_name),
         :respawn => respawn(cmd_options),
         :respawn_limit => respawn_limit(cmd_options),
-        :kill_timeout => kill_timeout(cmd_options)
+        :kill_timeout => kill_timeout(cmd_options),
+        :kill_signal => kill_signal(cmd_options)
       )
       File.open(upstart_cmd_conf(cmd_name), 'w') do |f|
         f.write(cmd_upstart_conf_content)

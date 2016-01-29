@@ -1,4 +1,4 @@
-require 'spec/spec_helper'
+require_relative '../../../spec_helper'
 
 describe Upstart::Exporter::Options::CommandLine do
   context "when correct options are given" do

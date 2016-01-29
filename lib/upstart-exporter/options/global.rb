@@ -11,6 +11,7 @@ module Upstart::Exporter::Options
       'start_on_runlevel' => '[3]',
       'stop_on_runlevel' => '[3]',
       'kill_timeout' => 30,
+      'kill_signal' => 'SIGTERM',
       'respawn' => {
         'count' => 5,
         'interval' => 10

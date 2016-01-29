@@ -139,6 +139,8 @@ For Procfile example given earlier the generated command will look like:
 
 `kill_timeout` option lets you override the default process kill timeout of 30 seconds.
 
+`kill_signal` option lets you override the default stopping signal, SIGTERM by default.
+
 `respawn` option controls restarting of scripts in case of their failure.
 By default this option is enabled. For
 more info look into [documentation](http://upstart.ubuntu.com/cookbook/#respawn).
