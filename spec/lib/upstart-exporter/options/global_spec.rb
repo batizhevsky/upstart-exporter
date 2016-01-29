@@ -1,4 +1,4 @@
-require_relative '../../../spec_helper'
+require File.expand_path('../../../spec_helper', File.dirname(__FILE__))
 
 describe Upstart::Exporter::Options::Global do
   let(:defaults){ Upstart::Exporter::Options::Global::DEFAULTS }

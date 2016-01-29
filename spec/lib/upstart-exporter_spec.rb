@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require File.expand_path('../spec_helper', File.dirname(__FILE__))
 
 describe Upstart::Exporter do
   let(:tpl){ Upstart::Exporter::Templates }
